@@ -69,15 +69,15 @@ backend:
     pluginSources:
       - catalog
 # See README.md in the proxy-backend plugin for information on the configuration format
-proxy:
-  endpoints:
-    '/pagerduty':
-      target: https://api.pagerduty.com
-      headers:
-        Authorization: Token token=${PAGERDUTY_TOKEN}
+proxy: {}
+  # endpoints:
+  #   '/pagerduty':
+  #     target: https://api.pagerduty.com
+  #     headers:
+  #       Authorization: Token token=${PAGERDUTY_TOKEN}
 
 organization:
-  name: My Company
+  name: Footprint IT Solutions
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -93,9 +93,9 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3' or 'azureBlobStorage' or 'openStackSwift'. Read documentation for using alternatives.
 
 integrations:
-  github:
-    - host: github.com
-      token: ${GITHUB_TOKEN}
+  # github:
+  #   - host: github.com
+  #     token: ${GITHUB_TOKEN}
   ### Example for how to add your GitHub Enterprise instance using the API:
   # - host: ghe.example.net
   #   apiBaseUrl: https://ghe.example.net/api/v3
@@ -104,9 +104,9 @@ integrations:
   # - host: ghe.example.net
   #   rawBaseUrl: https://ghe.example.net/raw
   #   token: ${GHE_TOKEN}
-  gitlab:
-    - host: gitlab.com
-      token: ${GITLAB_TOKEN}
+  # gitlab:
+  #   - host: gitlab.com
+  #     token: ${GITLAB_TOKEN}
   ### Example for how to add a bitbucket cloud integration
   # bitbucketCloud:
   #   # Using API token
@@ -238,80 +238,80 @@ auth:
   ### Providing an auth.session.secret will enable session support in the auth-backend
   # session:
   #   secret: custom session secret
-  providers:
-    google:
-      development:
-        clientId: ${AUTH_GOOGLE_CLIENT_ID}
-        clientSecret: ${AUTH_GOOGLE_CLIENT_SECRET}
-    github:
-      development:
-        clientId: ${AUTH_GITHUB_CLIENT_ID}
-        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
-        enterpriseInstanceUrl: ${AUTH_GITHUB_ENTERPRISE_INSTANCE_URL}
-    gitlab:
-      development:
-        clientId: ${AUTH_GITLAB_CLIENT_ID}
-        clientSecret: ${AUTH_GITLAB_CLIENT_SECRET}
-        audience: ${GITLAB_BASE_URL}
-    saml:
-      entryPoint: 'http://localhost:7001/'
-      issuer: 'passport-saml'
-      cert: 'fake-cert-base64'
-    okta:
-      development:
-        clientId: ${AUTH_OKTA_CLIENT_ID}
-        clientSecret: ${AUTH_OKTA_CLIENT_SECRET}
-        audience: ${AUTH_OKTA_AUDIENCE}
-    oauth2:
-      development:
-        clientId: ${AUTH_OAUTH2_CLIENT_ID}
-        clientSecret: ${AUTH_OAUTH2_CLIENT_SECRET}
-        authorizationUrl: ${AUTH_OAUTH2_AUTH_URL}
-        tokenUrl: ${AUTH_OAUTH2_TOKEN_URL}
-        ###
-        # provide a list of scopes as needed for your OAuth2 Server:
-        #
-        # scope: saml-login-selector openid profile email
-    oidc:
-      # Note that you must define a session secret (see above) since the oidc provider requires session support.
-      # Note that by default, this provider will use the 'none' prompt which assumes that your are already logged on in the IDP.
-      # You should set prompt to:
-      # - auto: will let the IDP decide if you need to log on or if you can skip login when you have an active SSO session
-      # - login: will force the IDP to always present a login form to the user
-      development:
-        metadataUrl: ${AUTH_OIDC_METADATA_URL}
-        clientId: ${AUTH_OIDC_CLIENT_ID}
-        clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
-        tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_AUTH_METHOD} # default='client_secret_basic'
-        tokenSignedResponseAlg: ${AUTH_OIDC_TOKEN_SIGNED_RESPONSE_ALG} # default='RS256'
-        scope: ${AUTH_OIDC_SCOPE} # default='openid profile email'
-        prompt: ${AUTH_OIDC_PROMPT} # default=none (allowed values: auto, none, consent, login)
-    auth0:
-      development:
-        clientId: ${AUTH_AUTH0_CLIENT_ID}
-        clientSecret: ${AUTH_AUTH0_CLIENT_SECRET}
-        domain: ${AUTH_AUTH0_DOMAIN}
-    microsoft:
-      development:
-        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
-        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        tenantId: ${AUTH_MICROSOFT_TENANT_ID}
-    onelogin:
-      development:
-        clientId: ${AUTH_ONELOGIN_CLIENT_ID}
-        clientSecret: ${AUTH_ONELOGIN_CLIENT_SECRET}
-        issuer: ${AUTH_ONELOGIN_ISSUER}
-    bitbucket:
-      development:
-        clientId: ${AUTH_BITBUCKET_CLIENT_ID}
-        clientSecret: ${AUTH_BITBUCKET_CLIENT_SECRET}
-    atlassian:
-      development:
-        clientId: ${AUTH_ATLASSIAN_CLIENT_ID}
-        clientSecret: ${AUTH_ATLASSIAN_CLIENT_SECRET}
-        scope: ${AUTH_ATLASSIAN_SCOPES}
-    myproxy: {}
-    guest: {}
+  providers: {}
+    # google:
+    #   development:
+    #     clientId: ${AUTH_GOOGLE_CLIENT_ID}
+    #     clientSecret: ${AUTH_GOOGLE_CLIENT_SECRET}
+    # github:
+    #   development:
+    #     clientId: ${AUTH_GITHUB_CLIENT_ID}
+    #     clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+    #     enterpriseInstanceUrl: ${AUTH_GITHUB_ENTERPRISE_INSTANCE_URL}
+    # gitlab:
+    #   development:
+    #     clientId: ${AUTH_GITLAB_CLIENT_ID}
+    #     clientSecret: ${AUTH_GITLAB_CLIENT_SECRET}
+    #     audience: ${GITLAB_BASE_URL}
+    # saml:
+    #   entryPoint: 'http://localhost:7001/'
+    #   issuer: 'passport-saml'
+    #   cert: 'fake-cert-base64'
+    # okta:
+    #   development:
+    #     clientId: ${AUTH_OKTA_CLIENT_ID}
+    #     clientSecret: ${AUTH_OKTA_CLIENT_SECRET}
+    #     audience: ${AUTH_OKTA_AUDIENCE}
+    # oauth2:
+    #   development:
+    #     clientId: ${AUTH_OAUTH2_CLIENT_ID}
+    #     clientSecret: ${AUTH_OAUTH2_CLIENT_SECRET}
+    #     authorizationUrl: ${AUTH_OAUTH2_AUTH_URL}
+    #     tokenUrl: ${AUTH_OAUTH2_TOKEN_URL}
+    #     ###
+    #     # provide a list of scopes as needed for your OAuth2 Server:
+    #     #
+    #     # scope: saml-login-selector openid profile email
+    # oidc:
+    #   # Note that you must define a session secret (see above) since the oidc provider requires session support.
+    #   # Note that by default, this provider will use the 'none' prompt which assumes that your are already logged on in the IDP.
+    #   # You should set prompt to:
+    #   # - auto: will let the IDP decide if you need to log on or if you can skip login when you have an active SSO session
+    #   # - login: will force the IDP to always present a login form to the user
+    #   development:
+    #     metadataUrl: ${AUTH_OIDC_METADATA_URL}
+    #     clientId: ${AUTH_OIDC_CLIENT_ID}
+    #     clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+    #     tokenEndpointAuthMethod: ${AUTH_OIDC_TOKEN_ENDPOINT_AUTH_METHOD} # default='client_secret_basic'
+    #     tokenSignedResponseAlg: ${AUTH_OIDC_TOKEN_SIGNED_RESPONSE_ALG} # default='RS256'
+    #     scope: ${AUTH_OIDC_SCOPE} # default='openid profile email'
+    #     prompt: ${AUTH_OIDC_PROMPT} # default=none (allowed values: auto, none, consent, login)
+    # auth0:
+    #   development:
+    #     clientId: ${AUTH_AUTH0_CLIENT_ID}
+    #     clientSecret: ${AUTH_AUTH0_CLIENT_SECRET}
+    #     domain: ${AUTH_AUTH0_DOMAIN}
+    # microsoft:
+    #   development:
+    #     clientId: ${AUTH_MICROSOFT_CLIENT_ID}
+    #     clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
+    #     tenantId: ${AUTH_MICROSOFT_TENANT_ID}
+    # onelogin:
+    #   development:
+    #     clientId: ${AUTH_ONELOGIN_CLIENT_ID}
+    #     clientSecret: ${AUTH_ONELOGIN_CLIENT_SECRET}
+    #     issuer: ${AUTH_ONELOGIN_ISSUER}
+    # bitbucket:
+    #   development:
+    #     clientId: ${AUTH_BITBUCKET_CLIENT_ID}
+    #     clientSecret: ${AUTH_BITBUCKET_CLIENT_SECRET}
+    # atlassian:
+    #   development:
+    #     clientId: ${AUTH_ATLASSIAN_CLIENT_ID}
+    #     clientSecret: ${AUTH_ATLASSIAN_CLIENT_SECRET}
+    #     scope: ${AUTH_ATLASSIAN_SCOPES}
+    # myproxy: {}
+    # guest: {}
 
 permission:
   enabled: true

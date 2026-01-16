@@ -1,0 +1,39 @@
+backend:
+  baseUrl: http://backstage.backstage.svc.cluster.local:7007
+  listen:
+    port: 7007
+  # database:
+  #   client: pg
+  #   connection:
+  #     # host: host.docker.internal
+  #     port: 5432
+  #     user: postgres
+  #     password: postgres
+#   cache:
+#     store: redis
+#     connection: redis://host.docker.internal:6379
+# search:
+#   elasticsearch:
+#     provider: opensearch
+#     node: 'http://host.docker.internal:9200'
+#     auth:
+#       username: admin
+#       password: admin
+auth:
+  # see https://backstage.io/docs/auth/ to learn about auth providers
+  environment: development
+  providers:
+    google:
+      development:
+        clientId: ${AUTH_GOOGLE_CLIENT_ID}
+        clientSecret: ${AUTH_GOOGLE_CLIENT_SECRET}
+    # guest: {}
+# postgresql:
+#   enabled: true
+#   # image: 
+#   #   repository: postgres:17.7
+#   auth:
+#     username: postgres
+#     existingSecret: postgres-secret
+#     secretKeys: 
+#       adminPasswordKey: password
